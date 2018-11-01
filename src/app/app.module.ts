@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
+import { NgZorroAntdModule, NZ_I18N, zh_CN, NZ_MESSAGE_CONFIG } from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 
@@ -15,36 +15,47 @@ import { SampleComponent } from './components/sample/sample.component';
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { CookieService } from 'ngx-cookie-service';
 //proj
+import { GuardsService } from "./services/routeguards/guards.service";
+import { HomeComponent } from './home/home.component';
+import { AuthComponent } from './auth/auth.component';
 
 registerLocaleData(zh);
 
-const routes: Routes = [{
-  path: '',
-  children: [
-    // route sample
-    { path: 'sample', component: SampleComponent },
-    { path: 'dash', component: DashboardComponent },
-    { path: '', redirectTo: '/dash', pathMatch: 'full' }
-    //{ path: '<path>', component: <refer to component>, canActivate: [<route guard service, if needed>] }
+const routes: Routes = [
+  {
+    path: "auth",
+    component: AuthComponent
+  }, {
+    path: 'coolname',
+    component: HomeComponent,
+    canActivate: [GuardsService],
+    children: [
+      // route sample
+      { path: 'sample', component: SampleComponent, canActivate: [GuardsService] },
+      { path: 'dash', component: DashboardComponent, canActivate: [GuardsService] },
+      { path: '', redirectTo: '/coolname/dash', pathMatch: 'full' }
+      //{ path: '<path>', component: <refer to component>, canActivate: [<route guard service, if needed>] }
 
-  ]
-}]
+    ]
+  }]
 
 @NgModule({
   declarations: [
     AppComponent,
     SampleComponent,
-    DashboardComponent
+    DashboardComponent,
+    AuthComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    FormsModule,
+    FormsModule, ReactiveFormsModule,
     HttpClientModule,
     NgZorroAntdModule,
     RouterModule.forRoot(routes, { useHash: true })
   ],
-  providers: [{ provide: NZ_I18N, useValue: zh_CN }, CookieService],
+  providers: [{ provide: NZ_I18N, useValue: zh_CN }, CookieService, GuardsService, { provide: NZ_MESSAGE_CONFIG, useValue: { nzDuration: 3000 } }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
