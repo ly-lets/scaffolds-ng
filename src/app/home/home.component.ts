@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GuardsService } from "../services/routeguards/guards.service";
 
 @Component({
   selector: 'app-home',
@@ -9,18 +8,8 @@ import { GuardsService } from "../services/routeguards/guards.service";
 export class HomeComponent implements OnInit {
 
   breadCrumbArr: Array<string> = [];
-  constructor(private guard: GuardsService) {
+  constructor() {
     console.log('home constructed');
-
-    this.guard.bindBreadCrumbs().subscribe(res => {
-      console.log(res);
-
-      if (res) {
-        this.breadCrumbArr = res;
-      } else {
-        this.breadCrumbArr = [];
-      }
-    });
   }
 
   ngOnInit() {

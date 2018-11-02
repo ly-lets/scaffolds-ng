@@ -8,9 +8,6 @@ import { Subject } from "rxjs";
     providedIn: 'root'
 })
 export class GuardsService implements CanActivate {
-
-    public breadCrumbs: Subject<Array<string>> = new Subject<Array<string>>();
-
     constructor(
         private cookie: CookieService,
         private route: Router
@@ -23,10 +20,6 @@ export class GuardsService implements CanActivate {
         //1-check cookie for disclaimer redirection
         //route.routeConfig.path
         if (this.cookie.get(environment.userLoginCookieKey)) {
-            console.log(route); console.log(state);
-
-
-            this.breadCrumbs.next(state.url.split('/'));
             return true;
         } else {
             this.route.navigate(["/auth"]);
@@ -34,7 +27,5 @@ export class GuardsService implements CanActivate {
 
     }
 
-    bindBreadCrumbs() {
-        return this.breadCrumbs.asObservable();
-    }
+     
 }
