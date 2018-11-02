@@ -1,6 +1,7 @@
 # AdminTemlateAnt
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
+Blended With ant-design for Angular.
 
 ## Development server
 
@@ -8,20 +9,10 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Please refer to [Angular CLI](https://github.com/angular/angular-cli) and [Ant-Design$Angular](https://ng.ant.design/docs/schematics/zh).
 
-## Build
+## Built-In
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- Enable cookie vaidation for logined user, along with Anguar route guards to control access to each components.
+- Sample component with remote data retrive and binding.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
