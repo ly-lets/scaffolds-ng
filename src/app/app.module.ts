@@ -22,6 +22,8 @@ import { AuthComponent } from './auth/auth.component';
 registerLocaleData(zh);
 
 const routes: Routes = [
+
+  { path: "", redirectTo: "/auth", pathMatch: "full" },
   {
     path: "auth",
     component: AuthComponent
@@ -31,9 +33,10 @@ const routes: Routes = [
     canActivate: [GuardsService],
     children: [
       // route sample
+      { path: "", redirectTo: "/coolname/dash", pathMatch: "full" },
       { path: 'sample', component: SampleComponent, data: { breadcrumb: "Use Sample" }, canActivate: [GuardsService] },
-      { path: 'dash', component: DashboardComponent, data: { breadcrumb: "Dashboard" }, canActivate: [GuardsService] },
-      { path: '', redirectTo: '/coolname/dash', data: { breadcrumb: "Test" }, pathMatch: 'full' }
+      { path: 'dash', component: DashboardComponent, data: { breadcrumb: "Dashboard" }, canActivate: [GuardsService] }
+
       //{ path: '<path>', component: <refer to component>, canActivate: [<route guard service, if needed>] }
 
     ]
