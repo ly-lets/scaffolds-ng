@@ -18,6 +18,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { GuardsService } from "./services/routeguards/guards.service";
 import { HomeComponent } from './home/home.component';
 import { AuthComponent } from './auth/auth.component';
+import { TestComponent } from './components/test/test.component';
 
 registerLocaleData(zh);
 
@@ -48,7 +49,10 @@ const routes: Routes = [
     SampleComponent,
     DashboardComponent,
     AuthComponent,
-    HomeComponent
+    HomeComponent, TestComponent
+  ],
+  entryComponents: [
+    TestComponent
   ],
   imports: [
     BrowserModule,

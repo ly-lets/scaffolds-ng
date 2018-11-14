@@ -3,6 +3,8 @@ import { SampleService } from "../../services/sample/sample-service.service";
 import { Sample } from "../../models/sample.model";
 import { ResponseMessage } from "../../models/ResponseMessage.model";
 import { NzMessageService } from 'ng-zorro-antd';
+import { NzModalRef, NzModalService } from 'ng-zorro-antd';
+import { TestComponent } from "../test/test.component";
 
 @Component({
   selector: 'app-sample',
@@ -12,7 +14,7 @@ import { NzMessageService } from 'ng-zorro-antd';
 export class SampleComponent implements OnInit {
   sampleArr: Array<Sample> = new Array<Sample>();
 
-  constructor(private sampleSVC: SampleService, private nzMsg: NzMessageService) { }
+  constructor(private sampleSVC: SampleService, private nzMsg: NzMessageService, private modalService: NzModalService) { }
 
   ngOnInit() {
 
@@ -35,6 +37,38 @@ export class SampleComponent implements OnInit {
 
   actionFunc2() {
     this.nzMsg.info("action number two");
+  }
+
+  editItem() {
+    this.createComponentModal();
+  }
+
+  createComponentModal(): void {
+    const modal = this.modalService.create<TestComponent>({
+      nzTitle: 'Modal Title',
+      nzContent: TestComponent,
+      // nzComponentParams: {
+      //   title: 'title in component',
+      //   subtitle: 'component sub title，will be changed after 2 sec'
+      // },
+      // nzFooter: [{
+      //   label: 'change component tilte from outside',
+      //   onClick: (componentInstance) => {
+      //     componentInstance.title = 'title in inner component is changed';
+      //   }
+      // }]
+    });
+
+    modal.afterOpen.subscribe(() => console.log('[afterOpen] emitted!'));
+
+    // Return a result when closed
+    modal.afterClose.subscribe((result) => console.log('[afterClose] The result is:', result));
+
+    // delay until modal instance created
+    window.setTimeout(() => {
+      const instance = modal.getContentComponent();
+      instance.sampleText = 'sample component changed from parent';
+    }, 2000);
   }
 
 }
