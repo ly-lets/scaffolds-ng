@@ -24,6 +24,7 @@
     "ng-zorro-antd": "^1.8.0",
     "ngx-cookie-service": "^1.0.10",
     "rxjs": "~6.3.3",
+    "viser-ng": "^2.4.2",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

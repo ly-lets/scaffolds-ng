@@ -14,6 +14,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SampleComponent } from './components/sample/sample.component';
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { CookieService } from 'ngx-cookie-service';
+import { ViserModule } from 'viser-ng';
 //proj
 import { GuardsService } from "./services/routeguards/guards.service";
 import { HomeComponent } from './home/home.component';
@@ -57,7 +58,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    FormsModule, ReactiveFormsModule,
+    FormsModule, ReactiveFormsModule, ViserModule,
     HttpClientModule,
     NgZorroAntdModule,
     RouterModule.forRoot(routes, { useHash: true })
