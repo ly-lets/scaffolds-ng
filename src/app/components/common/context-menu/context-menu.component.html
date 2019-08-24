@@ -1,0 +1,21 @@
+<div (contextmenu)="contextMenu($event,template)">
+  <ng-template #template>
+    <ul nz-menu nzInDropDown (nzClick)="close($event)">
+      <ng-template ngFor let-contact [ngForOf]="menuOptions">
+        <li nz-menu-item>1st menu item</li>
+      </ng-template>
+      <li *ngIf="!menuOptions" nzDisabled>
+        No Actions Available
+      </li>
+      <!-- <li nz-menu-item nzDisabled>disabled menu item</li> -->
+      <!-- <li nz-submenu>
+        <span title>sub menu</span>
+        <ul>
+          <li nz-menu-item>3rd menu item</li>
+          <li nz-menu-item>4th menu item</li>
+        </ul>
+      </li> -->
+
+    </ul>
+  </ng-template>
+</div>

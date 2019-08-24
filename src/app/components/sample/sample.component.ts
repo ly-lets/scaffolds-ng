@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { SampleService } from "../../services/sample/sample-service.service";
 import { Sample } from "../../models/sample.model";
 import { ResponseMessage } from "../../models/ResponseMessage.model";
 import { NzMessageService } from 'ng-zorro-antd';
-import { NzModalRef, NzModalService } from 'ng-zorro-antd';
+import { NzModalRef, NzModalService, NzDropdownContextComponent, NzDropdownService, NzMenuItemDirective } from 'ng-zorro-antd';
 import { TestComponent } from "../test/test.component";
 
 @Component({
@@ -13,8 +13,10 @@ import { TestComponent } from "../test/test.component";
 })
 export class SampleComponent implements OnInit {
   sampleArr: Array<Sample> = new Array<Sample>();
-
-  constructor(private sampleSVC: SampleService, private nzMsg: NzMessageService, private modalService: NzModalService) { }
+ 
+  constructor(private sampleSVC: SampleService,
+    private nzMsg: NzMessageService,
+    private modalService: NzModalService) { }
 
   ngOnInit() {
 
@@ -70,5 +72,6 @@ export class SampleComponent implements OnInit {
       instance.sampleText = 'sample component changed from parent';
     }, 2000);
   }
+
 
 }

@@ -20,6 +20,8 @@ import { GuardsService } from "./services/routeguards/guards.service";
 import { HomeComponent } from './home/home.component';
 import { AuthComponent } from './auth/auth.component';
 import { TestComponent } from './components/test/test.component';
+import { ContextMenuComponent } from './components/common/context-menu/context-menu.component';
+import { ContextMenuDirective } from './directives/context-menu.directive';
 
 registerLocaleData(zh);
 
@@ -50,7 +52,7 @@ const routes: Routes = [
     SampleComponent,
     DashboardComponent,
     AuthComponent,
-    HomeComponent, TestComponent
+    HomeComponent, TestComponent, ContextMenuComponent, ContextMenuDirective
   ],
   entryComponents: [
     TestComponent

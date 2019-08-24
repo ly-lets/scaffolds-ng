@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-const DataSet = require('@antv/data-set');
+// const DataSet = require('@antv/data-set');
 
 @Component({
   selector: 'app-test',
@@ -26,14 +26,14 @@ export class TestComponent implements OnInit {
 
   @Input() sampleText: string = "test component loaded";
   constructor() {
-    const dv = new DataSet.View().source(this.sourceData);
-    dv.transform({
-      type: 'percent',
-      field: 'count',
-      dimension: 'item',
-      as: 'percent'
-    });
-    this.data = dv.rows;
+    // const dv = new DataSet.View().source(this.sourceData);
+    // dv.transform({
+    //   type: 'percent',
+    //   field: 'count',
+    //   dimension: 'item',
+    //   as: 'percent'
+    // });
+    // this.data = dv.rows;
   }
 
   ngOnInit() {
