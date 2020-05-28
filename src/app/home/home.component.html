@@ -1,51 +1,31 @@
-<nz-layout class="full-height">
-  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="triggerTemplate">
-    <div class="logo side-logo">
-      <i nz-icon type="github" theme="fill"></i>
-    </div>
-    <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
-      <li nz-submenu>
-        <span title><i nz-icon type="user"></i><span class="nav-text">Standard Menu</span></span>
-        <ul>
-
-          <a routerLink="/coolname/dash">
-            <li nz-menu-item>Dashboard</li>
-          </a>
-          <a routerLink="/coolname/sample">
-            <li nz-menu-item>Sample Child</li>
-          </a>
-
-        </ul>
-      </li>
+<nz-layout >
+    <nz-header >
+        <nz-space [nzSize]="'large'">
+            <nz-space-item>
+                <div class="logo">Some Administration Hub</div>
+            </nz-space-item>
+            <nz-space-item>
+                <ul nz-menu [nzTheme]="'dark'"  nzMode="horizontal">
+                    <li nz-menu-item>nav 1</li>
+                    <li nz-menu-item>nav 2</li>
+                    <li nz-menu-item>nav 3</li>
+                </ul>
+            </nz-space-item>
+        </nz-space>
 
 
-      <li nz-submenu>
-        <span title><i nz-icon type="team"></i><span class="nav-text">Standard Menu Second</span></span>
-        <ul>
-          <li nz-menu-item>Child Menu 1</li>
-          <li nz-menu-item>Child Menu 2</li>
-        </ul>
-      </li>
-      <li nz-menu-item><span><i nz-icon type="file"></i><span class="nav-text">File</span></span></li>
-    </ul>
-  </nz-sider>
-  <nz-layout>
-    <nz-header style="background: #fff; padding:0;">
-      <i class="trigger" nz-icon [type]="isCollapsed?'menu-unfold':'menu-fold'" (click)="isCollapsed=!isCollapsed"></i>
     </nz-header>
-    <nz-content style="margin:0 16px;">
-      <nz-breadcrumb [nzAutoGenerate]="true" style="margin:16px 0;">
-        <!-- <nz-breadcrumb-item *ngFor="let item of breadCrumbArr">{{item}}</nz-breadcrumb-item> -->
-        <!-- <nz-breadcrumb-item></nz-breadcrumb-item>  -->
-      </nz-breadcrumb>
-      <div style="padding:24px; background: #fff; min-height: 480px; ">
-        <router-outlet></router-outlet>
-      </div>
-      <nz-footer style="text-align: center;">Ant Design ©2017 Implement By Angular</nz-footer>
+    <nz-content>
+        <nz-breadcrumb>
+            <nz-breadcrumb-item> <a [routerLink]="['/', 'nga']">NGA - Home</a>
+            </nz-breadcrumb-item>
+            <nz-breadcrumb-item>List</nz-breadcrumb-item>
+            <nz-breadcrumb-item>App</nz-breadcrumb-item>
+        </nz-breadcrumb>
+        <div class="inner-content">
+            <p>Content</p>
+            <router-outlet></router-outlet>
+        </div>
     </nz-content>
-
-  </nz-layout>
+    <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>
 </nz-layout>
-<ng-template #trigger>
-  <i nz-icon type="up"></i>
-</ng-template>

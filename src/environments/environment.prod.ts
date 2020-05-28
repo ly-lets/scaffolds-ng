@@ -1,5 +1,4 @@
 export const environment = {
   production: true,
-  backendService: "http://api.icndb.com/jokes/random",
-  userLoginCookieKey: "SAMPLEUSERLOGINCOOKIEKEY"
+  userTokenKey:"K"
 };

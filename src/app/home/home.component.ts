@@ -1,19 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-home',
+  selector: 'nga-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.less']
 })
 export class HomeComponent implements OnInit {
 
-  breadCrumbArr: Array<string> = [];
-  constructor() {
-    console.log('home constructed');
-  }
+  constructor() { }
 
-  ngOnInit() {
-
+  ngOnInit(): void {
   }
 
 }
